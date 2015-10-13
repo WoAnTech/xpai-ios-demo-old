@@ -1,0 +1,543 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7F23574D1A355AF80010F6C7 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F23574C1A355AF80010F6C7 /* VideoToolbox.framework */; };
+		7F379FA119F4E71100DEA1B5 /* fillMode.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F379F9F19F4E71100DEA1B5 /* fillMode.png */; };
+		7F379FA219F4E71100DEA1B5 /* fitMode.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F379FA019F4E71100DEA1B5 /* fitMode.png */; };
+		9B164E681810D1D90073E650 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B164E671810D1D90073E650 /* CFNetwork.framework */; };
+		9B164E6A1810D1E90073E650 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B164E691810D1E90073E650 /* AudioToolbox.framework */; };
+		9B164E6C1810D1F80073E650 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B164E6B1810D1F80073E650 /* CoreMedia.framework */; };
+		9B164E6E1810D20F0073E650 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B164E6D1810D20F0073E650 /* CoreVideo.framework */; };
+		9B164E781810E5030073E650 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B164E771810E5030073E650 /* AVFoundation.framework */; };
+		9B2FEE5E1845A3F3004ECF55 /* libbz2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2FEE5D1845A3F3004ECF55 /* libbz2.dylib */; };
+		9B2FEE601845A4E2004ECF55 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2FEE5F1845A4E2004ECF55 /* libz.dylib */; };
+		9B9B7B1D180F9A23004E7A18 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9B7B1C180F9A23004E7A18 /* libiconv.dylib */; };
+		9BA05F481935D7D800BC8DC4 /* XpaiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BA05F471935D7D800BC8DC4 /* XpaiViewController.xib */; };
+		9BA05F551935E1E700BC8DC4 /* backBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BA05F4A1935E1E700BC8DC4 /* backBtn.png */; };
+		9BA05F561935E1E700BC8DC4 /* bottomView.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BA05F4B1935E1E700BC8DC4 /* bottomView.png */; };
+		9BA05F571935E1E700BC8DC4 /* pauseBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BA05F4C1935E1E700BC8DC4 /* pauseBtn.png */; };
+		9BA05F581935E1E700BC8DC4 /* playBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BA05F4D1935E1E700BC8DC4 /* playBtn.png */; };
+		9BA05F591935E1E700BC8DC4 /* playNextBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BA05F4E1935E1E700BC8DC4 /* playNextBtn.png */; };
+		9BA05F5A1935E1E700BC8DC4 /* playPreBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BA05F4F1935E1E700BC8DC4 /* playPreBtn.png */; };
+		9BA05F5B1935E1E700BC8DC4 /* topback.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BA05F501935E1E700BC8DC4 /* topback.png */; };
+		9BA05F641935E24B00BC8DC4 /* InputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BA05F611935E24B00BC8DC4 /* InputViewController.m */; };
+		9BA05F651935E24B00BC8DC4 /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BA05F631935E24B00BC8DC4 /* PlayViewController.m */; };
+		9BA05F681935E34F00BC8DC4 /* InputViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BA05F671935E34F00BC8DC4 /* InputViewController.xib */; };
+		9BA05F6A1935E77E00BC8DC4 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BA05F691935E77E00BC8DC4 /* OpenGLES.framework */; };
+		9BA05F6C1935E79200BC8DC4 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BA05F6B1935E79200BC8DC4 /* MediaPlayer.framework */; };
+		9BA05F6E1935E7A900BC8DC4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BA05F6D1935E7A900BC8DC4 /* QuartzCore.framework */; };
+		9BA05F711935ED2300BC8DC4 /* SuperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BA05F701935ED2300BC8DC4 /* SuperViewController.m */; };
+		9BBB4D5E19076134007F2E3C /* libXpaiLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BBB4D5D19076134007F2E3C /* libXpaiLib.a */; };
+		9BE489F519373DFE00563027 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE489ED19373DFE00563027 /* SettingViewController.m */; };
+		9BE489F619373DFE00563027 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BE489EE19373DFE00563027 /* SettingViewController.xib */; };
+		9BE489F719373DFE00563027 /* VideoParamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE489F019373DFE00563027 /* VideoParamViewController.m */; };
+		9BE489F819373DFE00563027 /* VideoParamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BE489F119373DFE00563027 /* VideoParamViewController.xib */; };
+		9BE489F919373DFE00563027 /* VideoRecordModeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE489F319373DFE00563027 /* VideoRecordModeController.m */; };
+		9BE489FA19373DFE00563027 /* VideoRecordModeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BE489F419373DFE00563027 /* VideoRecordModeController.xib */; };
+		9BE489FD19373EE000563027 /* SettingConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE489FC19373EE000563027 /* SettingConfig.m */; };
+		BA731B8C1A71DF5400B9D391 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA731B8B1A71DF5400B9D391 /* Images.xcassets */; };
+		DC77B4D6165F678C0095EEEB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC77B4D5165F678C0095EEEB /* Default-568h@2x.png */; };
+		DC81AF951453056700109399 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC81AF941453056700109399 /* AssetsLibrary.framework */; };
+		DC8471A51328B57D00CE167E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8471A41328B57D00CE167E /* UIKit.framework */; };
+		DC8471A71328B57D00CE167E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8471A61328B57D00CE167E /* Foundation.framework */; };
+		DC8471A91328B57D00CE167E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8471A81328B57D00CE167E /* CoreGraphics.framework */; };
+		DC8471AF1328B57D00CE167E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DC8471AD1328B57D00CE167E /* InfoPlist.strings */; };
+		DC8471B21328B57D00CE167E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8471B11328B57D00CE167E /* main.m */; };
+		DC8471B51328B57D00CE167E /* XpaiAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8471B41328B57D00CE167E /* XpaiAppDelegate.m */; };
+		DC8471C01328B5A300CE167E /* XpaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8471BF1328B5A300CE167E /* XpaiViewController.m */; };
+		DC8471C31328B5B400CE167E /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8471C21328B5B400CE167E /* RecordViewController.m */; };
+		DC8471CA1328B5EF00CE167E /* RecordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC8471C91328B5EF00CE167E /* RecordView.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7F23574C1A355AF80010F6C7 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		7F379F9F19F4E71100DEA1B5 /* fillMode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fillMode.png; sourceTree = "<group>"; };
+		7F379FA019F4E71100DEA1B5 /* fitMode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fitMode.png; sourceTree = "<group>"; };
+		9B164E671810D1D90073E650 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		9B164E691810D1E90073E650 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		9B164E6B1810D1F80073E650 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		9B164E6D1810D20F0073E650 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		9B164E771810E5030073E650 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		9B2FEE5D1845A3F3004ECF55 /* libbz2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.dylib; path = usr/lib/libbz2.dylib; sourceTree = SDKROOT; };
+		9B2FEE5F1845A4E2004ECF55 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		9B4C6AD9178A777F0021E5CB /* XpaiInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XpaiInterface.h; sourceTree = "<group>"; };
+		9B9B7B1C180F9A23004E7A18 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		9BA05F471935D7D800BC8DC4 /* XpaiViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XpaiViewController.xib; sourceTree = "<group>"; };
+		9BA05F4A1935E1E700BC8DC4 /* backBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backBtn.png; sourceTree = "<group>"; };
+		9BA05F4B1935E1E700BC8DC4 /* bottomView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottomView.png; sourceTree = "<group>"; };
+		9BA05F4C1935E1E700BC8DC4 /* pauseBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pauseBtn.png; sourceTree = "<group>"; };
+		9BA05F4D1935E1E700BC8DC4 /* playBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playBtn.png; sourceTree = "<group>"; };
+		9BA05F4E1935E1E700BC8DC4 /* playNextBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playNextBtn.png; sourceTree = "<group>"; };
+		9BA05F4F1935E1E700BC8DC4 /* playPreBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playPreBtn.png; sourceTree = "<group>"; };
+		9BA05F501935E1E700BC8DC4 /* topback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topback.png; sourceTree = "<group>"; };
+		9BA05F601935E24B00BC8DC4 /* InputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputViewController.h; sourceTree = "<group>"; };
+		9BA05F611935E24B00BC8DC4 /* InputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputViewController.m; sourceTree = "<group>"; };
+		9BA05F621935E24B00BC8DC4 /* PlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayViewController.h; sourceTree = "<group>"; };
+		9BA05F631935E24B00BC8DC4 /* PlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayViewController.m; sourceTree = "<group>"; };
+		9BA05F661935E26D00BC8DC4 /* WoanPlayerInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WoanPlayerInterface.h; sourceTree = "<group>"; };
+		9BA05F671935E34F00BC8DC4 /* InputViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputViewController.xib; sourceTree = "<group>"; };
+		9BA05F691935E77E00BC8DC4 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		9BA05F6B1935E79200BC8DC4 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		9BA05F6D1935E7A900BC8DC4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9BA05F6F1935ED2300BC8DC4 /* SuperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperViewController.h; sourceTree = "<group>"; };
+		9BA05F701935ED2300BC8DC4 /* SuperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperViewController.m; sourceTree = "<group>"; };
+		9BBB4D5D19076134007F2E3C /* libXpaiLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libXpaiLib.a; sourceTree = "<group>"; };
+		9BE489EC19373DFE00563027 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		9BE489ED19373DFE00563027 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		9BE489EE19373DFE00563027 /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
+		9BE489EF19373DFE00563027 /* VideoParamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoParamViewController.h; sourceTree = "<group>"; };
+		9BE489F019373DFE00563027 /* VideoParamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoParamViewController.m; sourceTree = "<group>"; };
+		9BE489F119373DFE00563027 /* VideoParamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoParamViewController.xib; sourceTree = "<group>"; };
+		9BE489F219373DFE00563027 /* VideoRecordModeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoRecordModeController.h; sourceTree = "<group>"; };
+		9BE489F319373DFE00563027 /* VideoRecordModeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoRecordModeController.m; sourceTree = "<group>"; };
+		9BE489F419373DFE00563027 /* VideoRecordModeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoRecordModeController.xib; sourceTree = "<group>"; };
+		9BE489FB19373EE000563027 /* SettingConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingConfig.h; sourceTree = "<group>"; };
+		9BE489FC19373EE000563027 /* SettingConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingConfig.m; sourceTree = "<group>"; };
+		BA731B8B1A71DF5400B9D391 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		DC48C31A135748C700D2C16E /* Xpai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Xpai.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC77B4D5165F678C0095EEEB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		DC81AF941453056700109399 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		DC8471A41328B57D00CE167E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		DC8471A61328B57D00CE167E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		DC8471A81328B57D00CE167E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		DC8471AC1328B57D00CE167E /* Xpai-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Xpai-Info.plist"; sourceTree = "<group>"; };
+		DC8471AE1328B57D00CE167E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DC8471B01328B57D00CE167E /* Xpai-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Xpai-Prefix.pch"; sourceTree = "<group>"; };
+		DC8471B11328B57D00CE167E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DC8471B31328B57D00CE167E /* XpaiAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XpaiAppDelegate.h; sourceTree = "<group>"; };
+		DC8471B41328B57D00CE167E /* XpaiAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XpaiAppDelegate.m; sourceTree = "<group>"; };
+		DC8471BE1328B5A300CE167E /* XpaiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XpaiViewController.h; sourceTree = "<group>"; };
+		DC8471BF1328B5A300CE167E /* XpaiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XpaiViewController.m; sourceTree = "<group>"; };
+		DC8471C11328B5B400CE167E /* RecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordViewController.h; sourceTree = "<group>"; };
+		DC8471C21328B5B400CE167E /* RecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordViewController.m; sourceTree = "<group>"; };
+		DC8471C91328B5EF00CE167E /* RecordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordView.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DC84719D1328B57D00CE167E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F23574D1A355AF80010F6C7 /* VideoToolbox.framework in Frameworks */,
+				9BA05F6E1935E7A900BC8DC4 /* QuartzCore.framework in Frameworks */,
+				9BA05F6C1935E79200BC8DC4 /* MediaPlayer.framework in Frameworks */,
+				9BA05F6A1935E77E00BC8DC4 /* OpenGLES.framework in Frameworks */,
+				9B2FEE601845A4E2004ECF55 /* libz.dylib in Frameworks */,
+				9B2FEE5E1845A3F3004ECF55 /* libbz2.dylib in Frameworks */,
+				9B164E781810E5030073E650 /* AVFoundation.framework in Frameworks */,
+				9B164E6E1810D20F0073E650 /* CoreVideo.framework in Frameworks */,
+				9BBB4D5E19076134007F2E3C /* libXpaiLib.a in Frameworks */,
+				9B164E6C1810D1F80073E650 /* CoreMedia.framework in Frameworks */,
+				9B164E6A1810D1E90073E650 /* AudioToolbox.framework in Frameworks */,
+				9B164E681810D1D90073E650 /* CFNetwork.framework in Frameworks */,
+				9B9B7B1D180F9A23004E7A18 /* libiconv.dylib in Frameworks */,
+				DC81AF951453056700109399 /* AssetsLibrary.framework in Frameworks */,
+				DC8471A51328B57D00CE167E /* UIKit.framework in Frameworks */,
+				DC8471A71328B57D00CE167E /* Foundation.framework in Frameworks */,
+				DC8471A91328B57D00CE167E /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9B4C6AD7178A776B0021E5CB /* XpaiLib */ = {
+			isa = PBXGroup;
+			children = (
+				9BBB4D5D19076134007F2E3C /* libXpaiLib.a */,
+				9B4C6AD9178A777F0021E5CB /* XpaiInterface.h */,
+				9BA05F661935E26D00BC8DC4 /* WoanPlayerInterface.h */,
+			);
+			name = XpaiLib;
+			sourceTree = "<group>";
+		};
+		9BA05F491935E1E700BC8DC4 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				9BA05F4A1935E1E700BC8DC4 /* backBtn.png */,
+				9BA05F4B1935E1E700BC8DC4 /* bottomView.png */,
+				9BA05F4C1935E1E700BC8DC4 /* pauseBtn.png */,
+				9BA05F4D1935E1E700BC8DC4 /* playBtn.png */,
+				9BA05F4E1935E1E700BC8DC4 /* playNextBtn.png */,
+				9BA05F4F1935E1E700BC8DC4 /* playPreBtn.png */,
+				9BA05F501935E1E700BC8DC4 /* topback.png */,
+				7F379F9F19F4E71100DEA1B5 /* fillMode.png */,
+				7F379FA019F4E71100DEA1B5 /* fitMode.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		9BA05F511935E1E700BC8DC4 /* videos */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = videos;
+			sourceTree = "<group>";
+		};
+		9BA05F5F1935E23700BC8DC4 /* WoanPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				9BA05F601935E24B00BC8DC4 /* InputViewController.h */,
+				9BA05F611935E24B00BC8DC4 /* InputViewController.m */,
+				9BA05F671935E34F00BC8DC4 /* InputViewController.xib */,
+				9BA05F621935E24B00BC8DC4 /* PlayViewController.h */,
+				9BA05F631935E24B00BC8DC4 /* PlayViewController.m */,
+				9BA05F6F1935ED2300BC8DC4 /* SuperViewController.h */,
+				9BA05F701935ED2300BC8DC4 /* SuperViewController.m */,
+			);
+			path = WoanPlayer;
+			sourceTree = "<group>";
+		};
+		9BE489EB19373DFE00563027 /* VideoSetting */ = {
+			isa = PBXGroup;
+			children = (
+				9BE489FB19373EE000563027 /* SettingConfig.h */,
+				9BE489FC19373EE000563027 /* SettingConfig.m */,
+				9BE489EC19373DFE00563027 /* SettingViewController.h */,
+				9BE489ED19373DFE00563027 /* SettingViewController.m */,
+				9BE489EE19373DFE00563027 /* SettingViewController.xib */,
+				9BE489EF19373DFE00563027 /* VideoParamViewController.h */,
+				9BE489F019373DFE00563027 /* VideoParamViewController.m */,
+				9BE489F119373DFE00563027 /* VideoParamViewController.xib */,
+				9BE489F219373DFE00563027 /* VideoRecordModeController.h */,
+				9BE489F319373DFE00563027 /* VideoRecordModeController.m */,
+				9BE489F419373DFE00563027 /* VideoRecordModeController.xib */,
+			);
+			path = VideoSetting;
+			sourceTree = "<group>";
+		};
+		DC8471951328B57D00CE167E = {
+			isa = PBXGroup;
+			children = (
+				DC77B4D5165F678C0095EEEB /* Default-568h@2x.png */,
+				9B4C6AD7178A776B0021E5CB /* XpaiLib */,
+				DC8471AA1328B57D00CE167E /* Xpai */,
+				DC8471A31328B57D00CE167E /* Frameworks */,
+				DC8471A11328B57D00CE167E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DC8471A11328B57D00CE167E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DC48C31A135748C700D2C16E /* Xpai.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DC8471A31328B57D00CE167E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7F23574C1A355AF80010F6C7 /* VideoToolbox.framework */,
+				9BA05F6D1935E7A900BC8DC4 /* QuartzCore.framework */,
+				9BA05F6B1935E79200BC8DC4 /* MediaPlayer.framework */,
+				9BA05F691935E77E00BC8DC4 /* OpenGLES.framework */,
+				9B2FEE5F1845A4E2004ECF55 /* libz.dylib */,
+				9B2FEE5D1845A3F3004ECF55 /* libbz2.dylib */,
+				9B9B7B1C180F9A23004E7A18 /* libiconv.dylib */,
+				9B164E771810E5030073E650 /* AVFoundation.framework */,
+				9B164E6D1810D20F0073E650 /* CoreVideo.framework */,
+				9B164E6B1810D1F80073E650 /* CoreMedia.framework */,
+				9B164E691810D1E90073E650 /* AudioToolbox.framework */,
+				9B164E671810D1D90073E650 /* CFNetwork.framework */,
+				DC81AF941453056700109399 /* AssetsLibrary.framework */,
+				DC8471A41328B57D00CE167E /* UIKit.framework */,
+				DC8471A61328B57D00CE167E /* Foundation.framework */,
+				DC8471A81328B57D00CE167E /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DC8471AA1328B57D00CE167E /* Xpai */ = {
+			isa = PBXGroup;
+			children = (
+				9BA05F491935E1E700BC8DC4 /* Images */,
+				9BA05F511935E1E700BC8DC4 /* videos */,
+				DC8471B31328B57D00CE167E /* XpaiAppDelegate.h */,
+				DC8471B41328B57D00CE167E /* XpaiAppDelegate.m */,
+				DC8471BE1328B5A300CE167E /* XpaiViewController.h */,
+				DC8471BF1328B5A300CE167E /* XpaiViewController.m */,
+				9BA05F471935D7D800BC8DC4 /* XpaiViewController.xib */,
+				DC8471C11328B5B400CE167E /* RecordViewController.h */,
+				DC8471C21328B5B400CE167E /* RecordViewController.m */,
+				DC8471C91328B5EF00CE167E /* RecordView.xib */,
+				9BE489EB19373DFE00563027 /* VideoSetting */,
+				9BA05F5F1935E23700BC8DC4 /* WoanPlayer */,
+				BA731B8B1A71DF5400B9D391 /* Images.xcassets */,
+				DC8471AB1328B57D00CE167E /* Supporting Files */,
+			);
+			path = Xpai;
+			sourceTree = "<group>";
+		};
+		DC8471AB1328B57D00CE167E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DC8471AC1328B57D00CE167E /* Xpai-Info.plist */,
+				DC8471AD1328B57D00CE167E /* InfoPlist.strings */,
+				DC8471B01328B57D00CE167E /* Xpai-Prefix.pch */,
+				DC8471B11328B57D00CE167E /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DC84719F1328B57D00CE167E /* Xpai */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DC8471BB1328B57E00CE167E /* Build configuration list for PBXNativeTarget "Xpai" */;
+			buildPhases = (
+				DC84719C1328B57D00CE167E /* Sources */,
+				DC84719D1328B57D00CE167E /* Frameworks */,
+				DC84719E1328B57D00CE167E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Xpai;
+			productName = Xpai;
+			productReference = DC48C31A135748C700D2C16E /* Xpai.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DC8471971328B57D00CE167E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "B-Star";
+				TargetAttributes = {
+					DC84719F1328B57D00CE167E = {
+						DevelopmentTeam = BSH95EU577;
+					};
+				};
+			};
+			buildConfigurationList = DC84719A1328B57D00CE167E /* Build configuration list for PBXProject "Xpai" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = DC8471951328B57D00CE167E;
+			productRefGroup = DC8471A11328B57D00CE167E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DC84719F1328B57D00CE167E /* Xpai */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DC84719E1328B57D00CE167E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9BA05F681935E34F00BC8DC4 /* InputViewController.xib in Resources */,
+				9BA05F591935E1E700BC8DC4 /* playNextBtn.png in Resources */,
+				9BA05F5B1935E1E700BC8DC4 /* topback.png in Resources */,
+				9BA05F581935E1E700BC8DC4 /* playBtn.png in Resources */,
+				9BE489FA19373DFE00563027 /* VideoRecordModeController.xib in Resources */,
+				DC8471AF1328B57D00CE167E /* InfoPlist.strings in Resources */,
+				9BE489F619373DFE00563027 /* SettingViewController.xib in Resources */,
+				9BA05F481935D7D800BC8DC4 /* XpaiViewController.xib in Resources */,
+				7F379FA219F4E71100DEA1B5 /* fitMode.png in Resources */,
+				BA731B8C1A71DF5400B9D391 /* Images.xcassets in Resources */,
+				9BA05F551935E1E700BC8DC4 /* backBtn.png in Resources */,
+				9BA05F571935E1E700BC8DC4 /* pauseBtn.png in Resources */,
+				9BE489F819373DFE00563027 /* VideoParamViewController.xib in Resources */,
+				7F379FA119F4E71100DEA1B5 /* fillMode.png in Resources */,
+				9BA05F5A1935E1E700BC8DC4 /* playPreBtn.png in Resources */,
+				9BA05F561935E1E700BC8DC4 /* bottomView.png in Resources */,
+				DC8471CA1328B5EF00CE167E /* RecordView.xib in Resources */,
+				DC77B4D6165F678C0095EEEB /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DC84719C1328B57D00CE167E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9BA05F711935ED2300BC8DC4 /* SuperViewController.m in Sources */,
+				DC8471B21328B57D00CE167E /* main.m in Sources */,
+				DC8471B51328B57D00CE167E /* XpaiAppDelegate.m in Sources */,
+				9BE489F719373DFE00563027 /* VideoParamViewController.m in Sources */,
+				DC8471C01328B5A300CE167E /* XpaiViewController.m in Sources */,
+				DC8471C31328B5B400CE167E /* RecordViewController.m in Sources */,
+				9BA05F651935E24B00BC8DC4 /* PlayViewController.m in Sources */,
+				9BA05F641935E24B00BC8DC4 /* InputViewController.m in Sources */,
+				9BE489F519373DFE00563027 /* SettingViewController.m in Sources */,
+				9BE489F919373DFE00563027 /* VideoRecordModeController.m in Sources */,
+				9BE489FD19373EE000563027 /* SettingConfig.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DC8471AD1328B57D00CE167E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DC8471AE1328B57D00CE167E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DC8471B91328B57E00CE167E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		DC8471BA1328B57E00CE167E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		DC8471BC1328B57E00CE167E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Xpai/Xpai-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "Xpai/Xpai-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				LD_NO_PIE = YES;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "49ab5ddc-8950-411e-a0cf-0c33e68ab86d";
+				VALIDATE_PRODUCT = NO;
+				VALID_ARCHS = "armv7 arm64";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		DC8471BD1328B57E00CE167E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Xpai/Xpai-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "Xpai/Xpai-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				LD_NO_PIE = YES;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ababdd6a-7738-4d4d-9a7e-e17288fea597";
+				VALIDATE_PRODUCT = NO;
+				VALID_ARCHS = "armv7 arm64";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DC84719A1328B57D00CE167E /* Build configuration list for PBXProject "Xpai" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC8471B91328B57E00CE167E /* Debug */,
+				DC8471BA1328B57E00CE167E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DC8471BB1328B57E00CE167E /* Build configuration list for PBXNativeTarget "Xpai" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC8471BC1328B57E00CE167E /* Debug */,
+				DC8471BD1328B57E00CE167E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DC8471971328B57D00CE167E /* Project object */;
+}

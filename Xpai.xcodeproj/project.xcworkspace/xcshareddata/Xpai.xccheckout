@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>6156A5E2-D37A-4BD1-B84E-46BB5F645FA4</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Xpai</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>08581BCAF8ED7EE7243EE1C5720C5252FA5EDCBD</key>
+		<string>ssh://i.cnnt.org:7979/mv-iphone.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Demo/Xpai.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>08581BCAF8ED7EE7243EE1C5720C5252FA5EDCBD</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://i.cnnt.org:7979/mv-iphone.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>08581BCAF8ED7EE7243EE1C5720C5252FA5EDCBD</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>08581BCAF8ED7EE7243EE1C5720C5252FA5EDCBD</string>
+			<key>IDESourceControlWCCName</key>
+			<string>mv-iphone</string>
+		</dict>
+	</array>
+</dict>
+</plist>
