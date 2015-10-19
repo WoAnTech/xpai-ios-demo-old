@@ -83,11 +83,12 @@
 //开始预览封装方法
 - (void) startPreview:(WorkMode)mode res:(ResolutionValue)res;
 {
+    [XpaiInterface setAudioRecorderParams:AAC channels:1 sampleRate:16000 audioBitRate:16000];
     [XpaiInterface initRecorder:currentCameraPosition workMode:mode resolution:res audioSampleRate:22050 focusMode:AVCaptureFocusModeContinuousAutoFocus torchMode:AVCaptureTorchModeOff glView:nil prevRect:self.view.bounds captureVideoOrientation:currentVideoOrientation];
     _prevLayer = [[AVCaptureVideoPreviewLayer layerWithSession:[XpaiInterface getVideoCaptureSession]]retain];
     _prevLayer.frame = self.view.bounds;
     _prevLayer.orientation = currentVideoOrientation;
-    _prevLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    _prevLayer.videoGravity = AVLayerVideoGravityResize;//设置该属性修复预览视频画面大小小于播放端视频画面大小的问题
     [self.view.layer insertSublayer:_prevLayer atIndex:0];
     
     [XpaiInterface startVideoCapture];

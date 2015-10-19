@@ -14,6 +14,7 @@
 #define WoanPlayerPlaybackErrorNotification     @"PlaybackError"
 #define WoanPlayerSeekingDidFinishNotification  @"SeekingDidFinish"
 
+
 //错误码
 typedef enum{
     ERROR_INVALID_INPUTFILE = 301, //无效的视频文件地址
@@ -29,7 +30,7 @@ typedef enum {
 
 @interface WoanPlayerInterface : NSObject
 
-- (id)initWithContentString:(NSString *)contentString;
+- (id)initWithContentString:(NSString *)contentString parameters:(NSMutableDictionary *)paras;
 - (UIView *)getPlayViewWithFrame:(CGRect)frame;
 - (void)setShouldAutoPlay:(BOOL)shouldAutoPlay;
 - (void)prepareToPlay;

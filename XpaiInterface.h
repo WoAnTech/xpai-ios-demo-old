@@ -117,6 +117,11 @@ typedef enum AuthMode {
     CLEAR_PASSWORD                             //明文
 }AuthMode;
 
+typedef enum AudioEncoderType {
+    AMR_NB = 1,
+    AAC
+}AudioEncoderType;
+
 /* callback object */
 @interface NSObject (XpaiInterfaceDelegate)
 - (void)didConnectToServer;
@@ -162,6 +167,7 @@ typedef enum AuthMode {
 + (void)disconnect;
 + (void)setNetworkTimeout:(int)tm;      // 设置网络超时时间，当在tm（秒）内没有心跳，说明网络超时，发出disconnect消息
 + (void)setVideoBitRate:(int)bt;
++ (void)setAudioRecorderParams:(AudioEncoderType) aet channels:(int)channels sampleRate:(int)sampleRate audioBitRate:(int)bitRate;
 + (void)transVideoFile:(NSString*)inputFileName startTime:(CGFloat)startTime duration:(CGFloat)duration outputFileName:(NSString*)outputFileName;
 + (void)setNetWorkingAdaptive:(BOOL)isNWAdaptive;
 
