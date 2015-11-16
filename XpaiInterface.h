@@ -62,7 +62,7 @@ typedef enum ResolutionValue {
     RESOLUTION_1920x1080
 } ResolutionValue;
 
-int resArray[8][7];
+//int resArray[8][7];//当客户端集成了cocopads时再集成我们的SDK会报重复定义的错误，客户端在使用时将该定义注释掉即可通过编译
 
 /**
  * 当摄像头工作在不同模式下时，takePhoto函数取得的视频质量完全不同，如果摄像头工作在视频录制模式，即使把分辨
@@ -122,6 +122,11 @@ typedef enum AudioEncoderType {
     AAC
 }AudioEncoderType;
 
+typedef enum VideoMirroredMode {
+    NORMAL = 0,                              //正常模式
+    MIRRORED                                 //镜像模式，相当于照镜子(拍摄出来的视频画面左右颠倒)
+}VideoMirroredMode;
+
 /* callback object */
 @interface NSObject (XpaiInterfaceDelegate)
 - (void)didConnectToServer;
@@ -170,6 +175,7 @@ typedef enum AudioEncoderType {
 + (void)setAudioRecorderParams:(AudioEncoderType) aet channels:(int)channels sampleRate:(int)sampleRate audioBitRate:(int)bitRate;
 + (void)transVideoFile:(NSString*)inputFileName startTime:(CGFloat)startTime duration:(CGFloat)duration outputFileName:(NSString*)outputFileName;
 + (void)setNetWorkingAdaptive:(BOOL)isNWAdaptive;
++ (void)setVideoMirroredMode:(VideoMirroredMode)videoMirroredMode;
 
 + (SInt64)startRecord:(RecordMode)mode TransferMode:(TransferMode)transferMode forceReallyFile:(BOOL)forceReallyFile volume:(float)volume parameters:(NSDictionary *)paras;
 + (void)pauseRecord;
