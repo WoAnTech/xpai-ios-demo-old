@@ -62,10 +62,11 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    //设置播放直播视频的参数，如播放rtmp类型的视频-probesize可设置为20K，可设置-realtime参数,降低延迟
-    NSMutableDictionary *paras = [NSMutableDictionary dictionaryWithObjectsAndKeys: @"20000", @"-probesize", nil, @"-realtime", nil];
+    //设置播放直播视频的参数，如播放rtmp类型的视频-probesize可设置为200K，可设置-realtime参数,降低延迟
+    NSArray *parameters = [NSArray arrayWithObjects:@"-probesize", @"200000", @"-realtime", nil];
     //paras 不需要设置时传nil，播放点播视频请传nil
     player = [[WoanPlayerInterface alloc]initWithContentString:self.videoPath parameters:nil];
+
     //播放器界面
     playView = [player getPlayViewWithFrame:showVideoView.bounds];
     playView.contentMode = UIViewContentModeScaleAspectFit;

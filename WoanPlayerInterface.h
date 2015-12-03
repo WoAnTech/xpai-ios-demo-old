@@ -30,7 +30,7 @@ typedef enum {
 
 @interface WoanPlayerInterface : NSObject
 
-- (id)initWithContentString:(NSString *)contentString parameters:(NSMutableDictionary *)paras;
+- (id)initWithContentString:(NSString *)contentString parameters:(NSArray *)paras;
 - (UIView *)getPlayViewWithFrame:(CGRect)frame;
 - (void)setShouldAutoPlay:(BOOL)shouldAutoPlay;
 - (void)prepareToPlay;
