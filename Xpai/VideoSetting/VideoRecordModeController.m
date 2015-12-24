@@ -29,8 +29,6 @@
         [leftItem release];
         
         _dataSourceArray = [[NSMutableArray alloc]init];
-        [_dataSourceArray addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"全直播",@"kName", @"直播，视频数据完全上传至服务器", @"kDesc", nil]];
-        [_dataSourceArray addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"半直播",@"kName", @"直播，网络阻塞时丢弃部分数据不上传", @"kDesc", nil]];
         [_dataSourceArray addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"软编直播",@"kName", @"硬编数据保存至本地，软编数据上传", @"kDesc", nil]];
         [_dataSourceArray addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"IOS8优化",@"kName", @"硬编延迟问题的优化，仅IOS8以上支持", @"kDesc", nil]];
     }
@@ -39,7 +37,7 @@
 
 - (void)backAction:(id)sender
 {
-    [SettingConfig sharedInstance]._recordMode = _curRercodMode +1;
+    [SettingConfig sharedInstance]._recordMode = _curRercodMode +3;
     [[SettingConfig sharedInstance] WriteDataToFile];
     
     [self.navigationController popViewControllerAnimated:YES];
@@ -50,7 +48,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _curRercodMode = [SettingConfig sharedInstance]._recordMode -1;
+    _curRercodMode = [SettingConfig sharedInstance]._recordMode -3;
 }
 
 - (void)dealloc

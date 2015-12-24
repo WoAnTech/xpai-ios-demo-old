@@ -10,7 +10,13 @@
 #import <AVFoundation/AVAudioPlayer.h>
 #import "XpaiInterface.h"
 
-@interface RecordViewController : SuperViewController <AVAudioPlayerDelegate> {
+typedef enum ConnectionMode {
+    CONNECT_CLOUD = 0,
+    CONNECT_PRIVATE_CLOUD,
+    CONNECT_VIDEO_SERVER
+} ConnectionMode;
+
+@interface RecordViewController : SuperViewController <AVAudioPlayerDelegate, UIPickerViewDataSource, UIPickerViewDelegate> {
     BOOL _isConnected;//是否已连接视频服务器
     BOOL _isCapturing;//是否已初始化captureSession
     BOOL _isRecording;//是否开始直播
@@ -24,6 +30,8 @@
     AVAudioPlayer *player;
     AVCaptureVideoOrientation currentVideoOrientation;//设备拍摄方向
     AVCaptureDevicePosition currentCameraPosition;//摄像头
+    BOOL _isTcpPort;//是否是连接Tcp端口
+    int _failCode;//错误码
 }
 
 @property(nonatomic,retain)NSString *_fileName;//照片路径（本地）
@@ -37,6 +45,10 @@
 @property (retain, nonatomic) IBOutlet UITextField *service_code;
 @property (retain, nonatomic) IBOutlet UITextField *userName;
 @property (retain, nonatomic) IBOutlet UITextField *passWord;
+@property (strong, nonatomic) IBOutlet UIPickerView *pickerView;
+@property (retain, nonatomic) IBOutlet UISwitch *tcpSwitch;
+@property (retain, nonatomic) IBOutlet UILabel *tcpLabel;
+@property(nonatomic,retain)NSArray *connectTypes;
 
 - (IBAction)loginButtonPressed:(id)sender;
 - (IBAction)logoutButtonPressed:(id)sender;
@@ -54,6 +66,7 @@
 - (IBAction)stopAuidoRecord:(id)sender;
 - (IBAction)textFieldDoneEditing:(id)sender;
 - (IBAction)stopPreView:(id)sender;
+- (IBAction)toggleTCP:(id)sender;
 
 -(IBAction)pinch:(UIPinchGestureRecognizer *)recognizer;
 @end

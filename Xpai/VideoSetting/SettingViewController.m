@@ -14,6 +14,9 @@
 static const int  PARAM_TYPE = 100;
 static const int  RECORD_TYPE = 110;
 static const int  VOLUME_SET = 120;
+static const int  VIDEO_BITRATE_SET = 130;
+static int minVideoBitrate;
+static int maxVideoBitrate;
 
 @implementation SettingViewController
 @synthesize settingTableView;
@@ -44,12 +47,20 @@ static const int  VOLUME_SET = 120;
     NSString *videoSolution = nil;
     if ([SettingConfig sharedInstance]._videoResolution ==RESOLUTION_LOW) {
         videoSolution = [NSString stringWithFormat:@"视频分辨率 (192*144)"];
+        minVideoBitrate = 96;
+        maxVideoBitrate = 288;
     }else if ([SettingConfig sharedInstance]._videoResolution ==RESOLUTION_MEDIUM) {
         videoSolution = [NSString stringWithFormat:@"视频分辨率 (480*360)"];
+        minVideoBitrate = 240;
+        maxVideoBitrate = 720;
     }else if ([SettingConfig sharedInstance]._videoResolution ==RESOLUTION_VGA){
         videoSolution = [NSString stringWithFormat:@"视频分辨率 (640*480)"];
+        minVideoBitrate = 320;
+        maxVideoBitrate = 960;
     }else if ([SettingConfig sharedInstance]._videoResolution ==RESOLUTION_HIGH) {
         videoSolution = [NSString stringWithFormat:@"视频分辨率 (1280*720)"];
+        minVideoBitrate = 640;
+        maxVideoBitrate = 1920;
     }
     NSString *videoWorkMode = nil;
     if ([SettingConfig sharedInstance]._recordMode == HARDWARE_ENCODER_WITH_FULL_UPLOAD) {
@@ -76,6 +87,10 @@ static const int  VOLUME_SET = 120;
                @"增音调节", @"kName",
                @"qq.png", @"kImage",
                [NSNumber numberWithInt:VOLUME_SET],@"kType",nil],
+              [NSDictionary dictionaryWithObjectsAndKeys:
+               @"码流调节", @"kName",
+               @"qq.png", @"kImage",
+               [NSNumber numberWithInt:VIDEO_BITRATE_SET],@"kType",nil],
               nil];
 
     
@@ -123,11 +138,22 @@ static const int  VOLUME_SET = 120;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }else if([number intValue]==VOLUME_SET){
         cell.accessoryType = UITableViewCellAccessoryNone;
-        UISlider *volumeSlider = [[[UISlider alloc]initWithFrame:CGRectMake(85, 7, 220, 31)] autorelease];
+        UISlider *volumeSlider = [[[UISlider alloc]initWithFrame:CGRectMake(150, 7, 160, 31)] autorelease];
         [volumeSlider addTarget:self action:@selector(VolumeSliderChanged:) forControlEvents:UIControlEventValueChanged];
         volumeSlider.value = [SettingConfig sharedInstance]._volume;
         volumeSlider.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleWidth;
         [cell.contentView addSubview:volumeSlider];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@  %.1fdb ", [dict valueForKey:@"kName"],[SettingConfig sharedInstance]._volume];
+    } else if([number intValue]==VIDEO_BITRATE_SET){
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        UISlider *videoBitrateSlider = [[[UISlider alloc]initWithFrame:CGRectMake(150, 7, 160, 31)] autorelease];
+        [videoBitrateSlider addTarget:self action:@selector(VideoBitrateSliderChanged:) forControlEvents:UIControlEventValueChanged];
+        videoBitrateSlider.maximumValue = maxVideoBitrate;
+        videoBitrateSlider.minimumValue = minVideoBitrate;
+        videoBitrateSlider.value = [SettingConfig sharedInstance]._videoBitrate;
+        videoBitrateSlider.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleWidth;
+        [cell.contentView addSubview:videoBitrateSlider];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@  %.0fKb", [dict valueForKey:@"kName"],[SettingConfig sharedInstance]._videoBitrate];
     }
 
     return cell;
@@ -158,7 +184,17 @@ static const int  VOLUME_SET = 120;
 {
     UISlider *volumeSlider = (UISlider *)sender;
     [SettingConfig sharedInstance]._volume = volumeSlider.value;
+    [settingTableView reloadData];
     [[SettingConfig sharedInstance] WriteDataToFile];
 }
+
+- (void)VideoBitrateSliderChanged:(id)sender
+{
+    UISlider *videoBitrateSlider = (UISlider *)sender;
+    [SettingConfig sharedInstance]._videoBitrate = videoBitrateSlider.value;
+    [settingTableView reloadData];
+    [[SettingConfig sharedInstance] WriteDataToFile];
+}
+
 
 @end

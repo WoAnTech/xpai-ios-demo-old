@@ -36,6 +36,10 @@
     [_service_code release];
     [_userName release];
     [_passWord release];
+    [_pickerView release];
+    [_connectTypes release];
+    [_tcpSwitch release];
+    [_tcpLabel release];
     [super dealloc];
 }
 
@@ -71,8 +75,13 @@
 
 - (void)viewDidLoad
 {
-    ip.text = [SettingConfig sharedInstance]._videoServerIP;
-    port.text = [SettingConfig sharedInstance]._videoServerPort;
+    _connectTypes = [[NSArray alloc] initWithObjects:@"直播云", @"私有云", @"视频服务器", nil];
+    _pickerView.delegate = self;
+    _pickerView.showsSelectionIndicator=YES;
+    _pickerView.delegate=self;
+    [_pickerView selectRow:[SettingConfig sharedInstance]._connectionMode inComponent:0 animated:YES];
+    [self changePickerViewStatus:(int)[SettingConfig sharedInstance]._connectionMode];
+
     self.service_code.text = [SettingConfig sharedInstance]._service_code;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(deviceOrientationDidChange)
@@ -104,8 +113,11 @@
 //连接视频服务器
 - (IBAction)loginButtonPressed:(id)sender
 {
-    if (_isConnected)
+    if (_isConnected) {
+        label.text = @"已登录成功";
         return;
+    }
+    label.text = @"正在登录中";
     
 //    [XpaiInterface setAuthMode:CLEAR_PASSWORD];
     
@@ -116,12 +128,19 @@
     //授权服务码，可为nil
     NSString *serviceCode = _service_code.text;
     
-    //[XpaiInterface connectToServer:ip.text p:[port.text intValue] u:userName pd:password svcd:serviceCode OnUDP:YES];
-    [XpaiInterface connectCloud:@"http://c.zhiboyun.com/api/20140928/get_vs" u:userName pd:password svcd:serviceCode];
+    if ([SettingConfig sharedInstance]._connectionMode == CONNECT_CLOUD) {//直播云
+        [XpaiInterface connectCloud:[SettingConfig sharedInstance]._getCloudVSUrl u:userName pd:password svcd:serviceCode];
+    } else if ([SettingConfig sharedInstance]._connectionMode == CONNECT_PRIVATE_CLOUD) {//私有云
+        [SettingConfig sharedInstance]._getPrivateCloudVSUrl = ip.text;
+        [XpaiInterface connectCloud:ip.text u:userName pd:password svcd:serviceCode];
+    } else {//单台视频服务器
+        [SettingConfig sharedInstance]._videoServerIP = ip.text;
+        [XpaiInterface connectToServer:ip.text p:[port.text intValue] u:userName pd:password svcd:serviceCode OnUDP:!_isTcpPort];
+    }
+
     NSLog(@"%@:%d,%@<%@<%@", ip.text, [port.text intValue],serviceCode,userName,password);
     
     [SettingConfig sharedInstance]._service_code = serviceCode;
-    [SettingConfig sharedInstance]._videoServerIP = ip.text;
     [SettingConfig sharedInstance]._videoServerPort = port.text;
     
     [[SettingConfig sharedInstance] WriteDataToFile];
@@ -185,6 +204,21 @@
     _isOpenRecordMode = NO;
     _isOpenPhotoMode = NO;
 }
+
+//是否直连TCP端口
+- (IBAction)toggleTCP:(id)sender
+{
+    if (_isConnected) {
+        label.text = @"已登陆成功，无法修改";
+        [_tcpSwitch setOn:_isTcpPort animated:TRUE];
+        return;
+    }
+    if ([_tcpSwitch isOn]) {
+        _isTcpPort = TRUE;
+    } else {
+        _isTcpPort = FALSE;
+    }
+}
 //开始直播
 - (IBAction)startLiveButtonPressed:(id)sender
 {
@@ -193,7 +227,7 @@
         label.text = @"请先登陆并打开视频模式";
         return;
     }
-    [XpaiInterface setVideoBitRate:800];//码流设为800k
+    [XpaiInterface setVideoBitRate:(int)[SettingConfig sharedInstance]._videoBitrate];
     [XpaiInterface setNetWorkingAdaptive:TRUE];//打开网络自适应功能打开
     if (!_isRecording) {
         NSString *sa = [NSString stringWithFormat:@"请大家"];
@@ -350,6 +384,7 @@
 {
     NSLog(@"连接视频服务器失败！");
     _isConnected = NO;
+    _failCode = failCode;
     label.text = [NSString stringWithFormat:@"连接视频服务器失败！，错误码 %d", failCode];
 }
 //当视频录制开始，并从服务器获取到streamId后，调用该函数，利用这个streamId，可以与webserver进行应用层交互和处理
@@ -380,7 +415,7 @@
 - (void)didSendToServer:(SInt64)ID sentLen:(UInt32)sentLen currentPoint:(UInt32)currentPoint videoLen:(UInt32)videoLen
 {
     //视频长度在拍摄过程中为0，停止拍摄后才会得到视频长度
-    NSString *toshow = [NSString stringWithFormat:@"发送长度 %U, 视频长度 %U", (unsigned int)sentLen, (unsigned int)videoLen];
+    NSString *toshow = [NSString stringWithFormat:@"发送长度 %U", (unsigned int)sentLen];
     label.text = toshow;
 //    NSLog(@"%@",toshow);
 }
@@ -395,11 +430,11 @@
 //与视频服务器断开连接后调用
 - (void)didDisconnect
 {
+    label.text = _isConnected?@"网络断开":[NSString stringWithFormat:@"连接视频服务器失败！，错误码 %d", _failCode];
     _isConnected = NO;
     if(_isRecording){
         [self stopLiveButtonPressed:nil];
     }
-    label.text = @"网络断开";
     NSLog(@"网络断开");
 }
 //收到服务器发送的的文字消息时调用
@@ -448,6 +483,74 @@
         }
     }
     */
+}
+
+//几列
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+//每列多少行选项
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return [_connectTypes count];
+}
+
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return [_connectTypes objectAtIndex:row];
+}
+
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    if (_isConnected) {
+        label.text = @"已经登录成功，无法更改连接方式";
+        [_pickerView selectRow:[SettingConfig sharedInstance]._connectionMode inComponent:0 animated:YES];
+        row = [SettingConfig sharedInstance]._connectionMode;
+    }
+    //选中了哪一行
+    [self changePickerViewStatus:(int)row];
+}
+
+- (void)changePickerViewStatus:(int)row
+{
+    switch (row) {
+        case 0:
+            ip.text = [SettingConfig sharedInstance]._getCloudVSUrl;
+            [ip setBackgroundColor:[UIColor colorWithRed:100/255.0 green:100/255.0 blue:100/255.0 alpha:0.8]];
+            [ip setUserInteractionEnabled:FALSE];
+            [port setBackgroundColor:[UIColor colorWithRed:100/255.0 green:100/255.0 blue:100/255.0 alpha:0.8]];
+            [port setUserInteractionEnabled:FALSE];
+            [SettingConfig sharedInstance]._connectionMode = CONNECT_CLOUD;
+            [_tcpSwitch setHidden:TRUE];
+            [_tcpLabel setHidden:TRUE];
+            break;
+        case 1:
+            ip.text = [SettingConfig sharedInstance]._getPrivateCloudVSUrl;
+            [ip setBackgroundColor:NULL];
+            [ip setUserInteractionEnabled:TRUE];
+            [port setBackgroundColor:[UIColor colorWithRed:100/255.0 green:100/255.0 blue:100/255.0 alpha:0.8]];
+            [port setUserInteractionEnabled:FALSE];
+            [SettingConfig sharedInstance]._connectionMode = CONNECT_PRIVATE_CLOUD;
+            [_tcpSwitch setHidden:TRUE];
+            [_tcpLabel setHidden:TRUE];
+            break;
+        case 2:
+            ip.text = [SettingConfig sharedInstance]._videoServerIP;
+            port.text = [SettingConfig sharedInstance]._videoServerPort;
+            [ip setBackgroundColor:NULL];
+            [ip setUserInteractionEnabled:TRUE];
+            [port setBackgroundColor:NULL];
+            [port setUserInteractionEnabled:TRUE];
+            [SettingConfig sharedInstance]._connectionMode = CONNECT_VIDEO_SERVER;
+            [_tcpSwitch setHidden:FALSE];
+            [_tcpLabel setHidden:FALSE];
+            break;
+        default:
+            break;
+    }
+
 }
 
 - (void)viewDidUnload {

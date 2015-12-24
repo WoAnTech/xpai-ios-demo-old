@@ -99,6 +99,22 @@
     oldCell.accessoryType = UITableViewCellAccessoryNone;
     newCell.accessoryType = UITableViewCellAccessoryCheckmark;
     _currentResolution = indexPath.row;
+    switch (_currentResolution) {
+        case 0:
+            [SettingConfig sharedInstance]._videoBitrate = 192;
+            break;
+        case 1:
+            [SettingConfig sharedInstance]._videoBitrate = 480;
+            break;
+        case 2:
+            [SettingConfig sharedInstance]._videoBitrate = 640;
+            break;
+        case 3:
+            [SettingConfig sharedInstance]._videoBitrate = 1280;
+            break;
+        default:
+            break;
+    }
 }
 
 -(BOOL)shouldAutorotate
