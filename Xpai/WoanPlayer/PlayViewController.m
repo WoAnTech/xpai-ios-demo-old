@@ -56,8 +56,43 @@
 	// Do any additional setup after loading the view, typically from a nib.
     self.view.backgroundColor = [UIColor whiteColor];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillResignActive:)
+                                                 name:UIApplicationWillResignActiveNotification object:nil]; //监听是否触发home键挂起程序.
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive:)
+                                                 name:UIApplicationDidBecomeActiveNotification object:nil]; //监听是否重新进入程序程序
+
     [self addObservers];    
     [self initView];
+}
+
+- (void) viewDidDisappear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)applicationWillResignActive:(NSNotification*)n
+{
+    [player stop];
+}
+
+//按home键回来继续重新播放，点播可以在退出去的时候先暂停，回来再继续播放，直播则需重新初始化播放器再播放，这里Demo里面是点播地址
+- (void)applicationDidBecomeActive:(NSNotification*)n
+{
+   [self addObservers];
+   [self initView];
+    //设置播放直播视频的参数，如播放rtmp类型的视频-probesize可设置为200K，可设置-realtime参数,降低延迟
+    NSArray *parameters = [NSArray arrayWithObjects:@"-probesize", @"200000", @"-showmode", @"0", @"-realtime", nil];
+    //paras 不需要设置时传nil，播放点播视频请传nil
+    player = [[WoanPlayerInterface alloc]initWithContentString:self.videoPath parameters:nil];
+
+    //播放器界面
+    playView = [player getPlayViewWithFrame:showVideoView.bounds];
+    playView.contentMode = UIViewContentModeScaleAspectFit;
+    playView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleBottomMargin;
+    [showVideoView addSubview:playView];
+    [showVideoView sendSubviewToBack:playView];
+
+    [player prepareToPlay];
 }
 
 - (void)viewDidAppear:(BOOL)animated

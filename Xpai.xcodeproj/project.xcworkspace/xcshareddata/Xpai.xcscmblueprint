@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "1C7E8FF643F54268E26DA14CE28C33F63CA18027",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "1C7E8FF643F54268E26DA14CE28C33F63CA18027" : 0,
+    "08581BCAF8ED7EE7243EE1C5720C5252FA5EDCBD" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "6156A5E2-D37A-4BD1-B84E-46BB5F645FA4",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "1C7E8FF643F54268E26DA14CE28C33F63CA18027" : "xpai\/",
+    "08581BCAF8ED7EE7243EE1C5720C5252FA5EDCBD" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Xpai",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Xpai.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/i.cnnt.org:7979\/mv-iphone.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "08581BCAF8ED7EE7243EE1C5720C5252FA5EDCBD"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:WoAnTech\/xpai-ios-demo.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1C7E8FF643F54268E26DA14CE28C33F63CA18027"
+    }
+  ]
+}
