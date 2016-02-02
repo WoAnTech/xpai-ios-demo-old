@@ -43,6 +43,24 @@
     [super dealloc];
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+//按下Home键
+- (void)applicationWillResignActive:(UIApplication *)application
+//当应用程序将要入非活动状态执行，在此期间，应用程序不接收消息或事件，比如来电话了
+{
+    [XpaiInterface interruptLive];
+}
+//重新进入程序
+- (void)applicationDidBecomeActive:(UIApplication *)application
+//当应用程序入活动状态执行，这个刚好跟上面那个方法相反
+{
+    [XpaiInterface resumeRecord];
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -87,12 +105,19 @@
                                              selector:@selector(deviceOrientationDidChange)
                                                  name:UIDeviceOrientationDidChangeNotification
                                                object:[UIDevice currentDevice]];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillResignActive:)
+                                                 name:UIApplicationWillResignActiveNotification object:nil]; //监听是否触发home键挂起程序.
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive:)
+                                                 name:UIApplicationDidBecomeActiveNotification object:nil]; //监听是否重新进入程序.
 }
 
 //开始预览封装方法
 - (void) startPreview:(WorkMode)mode res:(ResolutionValue)res;
 {
     [XpaiInterface setAudioRecorderParams:AAC channels:1 sampleRate:16000 audioBitRate:16000];
+    [XpaiInterface setResumeLiveTimeout:25];//设置网络断线后，恢复直播的超时时间为25秒（不设置，默认为30秒）; 设置为0则不尝试恢复直播
     [XpaiInterface initRecorder:currentCameraPosition workMode:mode resolution:res audioSampleRate:22050 focusMode:AVCaptureFocusModeContinuousAutoFocus torchMode:AVCaptureTorchModeOff glView:nil prevRect:self.view.bounds captureVideoOrientation:currentVideoOrientation];
     _prevLayer = [[AVCaptureVideoPreviewLayer layerWithSession:[XpaiInterface getVideoCaptureSession]]retain];
     _prevLayer.frame = self.view.bounds;
@@ -412,7 +437,7 @@
 //}
 
 //视频服务器成功收到发送的数据时调用
-- (void)didSendToServer:(SInt64)ID sentLen:(UInt32)sentLen currentPoint:(UInt32)currentPoint videoLen:(UInt32)videoLen
+- (void)didSendToServer:(SInt64)ID sentLen:(UInt64)sentLen currentPoint:(UInt32)currentPoint videoLen:(UInt32)videoLen
 {
     //视频长度在拍摄过程中为0，停止拍摄后才会得到视频长度
     NSString *toshow = [NSString stringWithFormat:@"发送长度 %U", (unsigned int)sentLen];
@@ -432,9 +457,6 @@
 {
     label.text = _isConnected?@"网络断开":[NSString stringWithFormat:@"连接视频服务器失败！，错误码 %d", _failCode];
     _isConnected = NO;
-    if(_isRecording){
-        [self stopLiveButtonPressed:nil];
-    }
     NSLog(@"网络断开");
 }
 //收到服务器发送的的文字消息时调用
@@ -455,6 +477,29 @@
     player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:url] error: nil];
     [player play];
     [player setDelegate: self];
+}
+
+- (void)didStreamIdAndLocalFilePathNotify:(NSString*)streamId localFilePath:(NSString*)path;
+{
+    NSLog(@"didLocalFileNameNotify streamId: %@, 本地视频文件名为: %@", streamId, path);
+}
+
+- (void)didResumeLiveFail:(int)errorCode
+{
+    NSLog(@"didResumeLiveFail: %d", errorCode);
+    label.text = @"重连失败，当前直播无法续传，放弃重连服务器!";
+}
+
+- (void)doTryResumeLive
+{
+    NSLog(@"doTryResumeLive");
+    label.text = @"正在尝试断线重连";
+}
+
+- (void)didResumeLiveOk
+{
+    NSLog(@"didResumeLiveOk");
+    label.text = @"断线重连成功";
 }
 
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag

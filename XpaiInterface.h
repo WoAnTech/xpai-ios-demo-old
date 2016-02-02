@@ -138,8 +138,12 @@ typedef enum VideoMirroredMode {
 - (void)doReceiveMessage:(NSString *)userName msg:(NSString *)message;
 - (void)doReceiveAudioMessage:(NSString *)userName msgFile:(NSString *)url;
 - (void)didDisconnect;
-- (void)didSendToServer:(SInt64)ID sentLen:(UInt32)sentLen currentPoint:(UInt32)currentPoint videoLen:(UInt32)videoLen;
+- (void)didSendToServer:(SInt64)ID sentLen:(UInt64)sentLen currentPoint:(UInt32)currentPoint videoLen:(UInt32)videoLen;
 - (void)didCompleteUpload:(SInt64)ID;
+- (void)didStreamIdAndLocalFilePathNotify:(NSString*)streamId localFilePath:(NSString*)path;
+- (void)didResumeLiveFail:(int)errorCode;
+- (void)doTryResumeLive;
+- (void)didResumeLiveOk;
 @end
 
 @interface XpaiInterface : NSObject {
@@ -171,6 +175,8 @@ typedef enum VideoMirroredMode {
 + (void)connectCloud:(NSString *)httpApiUrl u:(NSString *)u pd:(NSString *)pd svcd:(NSString *)svcd;
 + (void)disconnect;
 + (void)setNetworkTimeout:(int)tm;      // 设置网络超时时间，当在tm（秒）内没有心跳，说明网络超时，发出disconnect消息
+// 设置直播恢复的超时时间，单位为秒，默认值是30秒(客户端默认开启了自动恢复直播的功能，恢复的超时时间为30s)，如果设置为0则不尝试自动恢复直播
++ (void)setResumeLiveTimeout:(int)tm;
 + (void)setVideoBitRate:(int)bt;
 + (void)setAudioRecorderParams:(AudioEncoderType) aet channels:(int)channels sampleRate:(int)sampleRate audioBitRate:(int)bitRate;
 + (void)transVideoFile:(NSString*)inputFileName startTime:(CGFloat)startTime duration:(CGFloat)duration outputFileName:(NSString*)outputFileName;
@@ -180,6 +186,7 @@ typedef enum VideoMirroredMode {
 + (SInt64)startRecord:(RecordMode)mode TransferMode:(TransferMode)transferMode forceReallyFile:(BOOL)forceReallyFile volume:(float)volume parameters:(NSDictionary *)paras;
 + (void)pauseRecord;
 + (void)resumeRecord;
++ (void)interruptLive;
 + (void)stopRecord;
 
 + (SInt64)uploadVideoFile:(NSString *)url mode:(UploadMode)mode sId:(NSString *)sId sPath:(NSString *)sPath isRecordDone:(BOOL)isRecordDone;
@@ -196,7 +203,7 @@ typedef enum VideoMirroredMode {
 + (SInt64)getCurrentSendVideoID;
 
 + (UInt32)getVideoLength:(SInt64)ID;
-+ (UInt32)getSentLength:(SInt64)ID;
++ (UInt64)getSentLength:(SInt64)ID;
 + (NSString *)getVideoFileName:(SInt64)ID;
 + (NSString *)getVideoStreamID:(SInt64)ID;
 + (NSString *)getVideoStreamPath:(SInt64)ID;
